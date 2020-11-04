@@ -21,7 +21,6 @@
   open=right
 ]{scrreprt}
 
-
 %==============================================================
 % Load all the packages and settings needed
 %==============================================================
@@ -33,22 +32,21 @@
 \input{TemplateFiles/CheckConfig.tex}
 \usepackage{TemplateFiles/GlobalSettings} % Custom package settings and commands for the template
 
-
 %==============================================================
 % Load and configure hyperref and Biblatex
 %==============================================================
 \usepackage[ % this must be after author info!
-    pdfcreator={LaTeX},	
-    pdfkeywords={}, 
-    pdfpagemode=UseOutlines, 
-    pdfdisplaydoctitle=true, 
-    pdflang=en, 
-    colorlinks=false,	
-    linkcolor=LinkColor, 
-    citecolor=LinkColor, 
-    filecolor=LinkColor, 
+    pdfcreator={LaTeX},
+    pdfkeywords={},
+    pdfpagemode=UseOutlines,
+    pdfdisplaydoctitle=true,
+    pdflang=en,
+    colorlinks=false,
+    linkcolor=LinkColor,
+    citecolor=LinkColor,
+    filecolor=LinkColor,
     urlcolor=LinkColor,
-    menucolor=LinkColor, 
+    menucolor=LinkColor,
     bookmarks=true,
     bookmarksnumbered=true
 ]{hyperref}
@@ -69,17 +67,13 @@
 \def\add@bibresources #1,#2\@eolst{\addbibresource{#1}\ifx\relax#2\relax\else\add@bibresources #2\@eolst\fi}
 \expandafter\addbibresources\expandafter{\ReferenceFiles} % Files with reference lists.
 
-
 \begin{document}
 \pagestyle{plain.scrheadings}
 \hypersetup{pageanchor=false} % Deactivate hyperref pageanchors for the parts not numbered
 
-%
 %==============================================================
 % Cover page
 %==============================================================
-
-
 \eject\pdfpagewidth=34.4cm\newgeometry{margin=0pt}
 \input{TemplateFiles/cover/Chalmers_Cover}
 \eject
@@ -131,7 +125,6 @@
 % Printing Location Page
 %==============================================================
 \thispagestyle{empty}
-
 \textbf{\ThePrintingLocationPageTitle}\\
 \ifdefined \ThePrintingLocationPageSubitle \if \ThePrintingLocationPageSubitle\empty\else
     {\footnotesize\textit{\ThePrintingLocationPageSubitle}}\\
@@ -155,19 +148,15 @@ SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
 
 % If the thesis is also part of another series of reports this must be stated on the printing location page. State the organisation responsible for publication (e.g. the name of the university and the university department), the name of the report series, the ISSN and the number of the report.
-
 % It could sometimes also be appropriate on the printing location page to include details of, for example;
-
 % - special funding sources, bodies that have been involved in co-operation and so on.
 % - Captions for any pictures on the cover page.
 % - The names of any photographers or illustrators.
-
 \vfill
 \ifdefined \TheCoverImageCaption\ifdefined\TheCoverImage\if\TheCoverImage\empty\else\if\TheCoverImageCaption\empty\else
     Cover:\\\TheCoverImageCaption\\~\\
 \fi\fi\fi\fi
 Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
-
 \newpage
 
 %==============================================================
@@ -179,7 +168,6 @@ Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
 \pagenumbering{roman}
 \setcounter{page}{1}
 
-
 % Print the header
 \textbf{\TheAbstractPageTitle}\\
 \ifdefined \TheAbstractPageSubitle \if \TheAbstractPageSubitle\empty\else
@@ -188,11 +176,9 @@ Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
 {\textsc{\TheAbstractPageAuthor}}\\
 Department of \TheDepartment \\
 Chalmers University of Technology
-
 \vfill % set the vertical alignment of the abstract to middle
 
 % The abstract must:
-
 % - Be written in English.
 % - Contain the name of the thesis, possible subtitle, name of the author, department and 'Chalmers University of Technology'.
 % - If the dissertation is written in Swedish this should also be stated.
@@ -252,7 +238,6 @@ Chalmers University of Technology
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \input{YourThesis/Acknowledgement.tex}
 
-
 %==============================================================
 % Acronyms
 %==============================================================
@@ -261,10 +246,8 @@ Chalmers University of Technology
 \addcontentsline{toc}{chapter}{Acronyms}
 \input{YourThesis/Acronyms.tex}
 
-
-
 %==============================================================
-% Part I : The overview
+% Part I : The overview - added in YourThesis/Content.tex
 %==============================================================
 % The recommendation from Chalmers is approximately 50 pages for Part 1.
 \cleardoublepage % start on an odd page number
@@ -284,9 +267,8 @@ Chalmers University of Technology
 \printbibliography[title=References]
 \end{refsection}
 
-
 %==============================================================
-% Part II : The papers
+% Part II : The papers - added in YourThesis/Config.tex
 %==============================================================
 \part{Papers}
 \setcounter{secnumdepth}{2}
@@ -302,7 +284,11 @@ Chalmers University of Technology
 \lehead{Paper \Alph{paper}}
 \rofoot{\pagemark}
 \lefoot{\pagemark}
+
+% Include either all papers automatically or manually by directory
 \includepapers
+%\includepaper{PaperTemplate}
+%\includepaper{PaperDummy}
 
 %==============================================================
 % End of template
